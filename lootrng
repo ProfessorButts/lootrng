@@ -1,0 +1,398 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LootMechanic21 : MonoBehaviour
+{
+    void OnMouseOver()
+    {
+        Debug.Log(Pf1 + " " + Pf2+" " + Pf3+" " + Sf1);
+    }
+
+    void OnMouseExit()
+    {
+        Debug.Log("Mouse is no longer on item");
+    }
+
+    public bool Prefix1 = false;
+    public bool Prefix2 = false;
+    public bool Prefix3 = false;
+    public bool Suffix1 = false;
+    public bool Suffix2 = false;
+    public bool Suffix3 = false;
+    public int pInt;
+    public bool pIntActive = false;
+    public int pStr;
+    public bool pStrActive = false;
+    public int pDex;
+    public bool pDexActive = false;
+    public int sIncDmg;
+    public bool sIncDmgActive = false;
+    public int sMoreDmg;
+    public bool sMoreDmgActive = false;
+    public int sDblDmg;
+    public bool sDblDmgActive = false;
+    public string Pf1;
+    public string Pf2;
+    public string Pf3;
+    public string Sf1;
+    public string Sf2;
+    public string Sf3;
+    private int rand;
+    
+    
+
+    public void Awake()
+    {
+        Prefix1 = false;
+        Prefix2 = false;
+        Prefix3 = false;
+        Suffix1 = false;
+        Suffix2 = false;
+        Suffix3 = false;
+        pIntActive = false;
+        pStrActive = false;
+        pDexActive = false;
+        sIncDmgActive = false;
+        sMoreDmgActive = false;
+        sDblDmgActive = false;
+        
+        rand = Random.Range(0, 2);
+        if (rand == 1)
+        {
+                Prefix1 = true;
+                rand = Random.Range(0, 2);
+                if (rand == 1)
+                {
+                    Prefix2 = true;
+                    rand = Random.Range(0, 2);
+                    if (rand == 1)
+                    {
+                        Prefix3 = true;
+                    }
+                }
+        }
+        rand = Random.Range(0, 2);
+        if (rand == 1)
+        {
+            Suffix1 = true;
+            rand = Random.Range(0, 2);
+            if (rand == 1)
+            {
+                Suffix2 = true;
+                rand = Random.Range(0, 2);
+                if (rand == 1)
+                {
+                    Suffix3 = true;
+                }
+            }
+        }
+        //Prefix 1
+        if (Prefix1 == false)
+        {
+            Pf1 = " ";
+        }
+        else if (Prefix1 == true)
+        {
+            rand = Random.Range(1, 4);
+            if (rand == 1)
+            {
+                pIntActive = true;
+                rand = Random.Range(0, 2);
+                if (rand == 0)
+                { pInt = 1; }
+                else
+                { pInt = 2; }
+                Pf1 = pInt + " Intelligence";
+            }
+            else if (rand == 2)
+            {
+                pStrActive = true;
+                rand = Random.Range(0, 2);
+                if (rand == 0)
+                { pStr = 1; }
+                else
+                { pStr = 2; }
+                Pf1 = pStr + " Strength";
+            }
+            else if (rand == 3)
+            {
+                pDexActive = true;
+                rand = Random.Range(0, 2);
+                if (rand == 0)
+                { pDex = 1; }
+                else
+                { pDex = 2; }
+                Pf1 = pDex + " Dexterity";
+            }
+        }
+        //Prefix 2
+        if (Prefix2 == false)
+        {
+            Pf2 = " ";
+        }
+        else if (Prefix2 == true)
+        {
+            //Intelligence Active
+            if (pIntActive == true)
+            {
+                rand = Random.Range(2, 4);
+                if (rand == 2)
+                {
+                    pStrActive = true;
+                    rand = Random.Range(0, 2);
+                    if (rand == 0)
+                    { pStr = 1; }
+                    else
+                    { pStr = 2; }
+                    Pf2 = pStr + " Strength";
+                }
+                else if (rand == 3)
+                {
+                    pDexActive = true;
+                    rand = Random.Range(0, 2);
+                    if (rand == 0)
+                    { pDex = 1; }
+                    else
+                    { pDex = 2; }
+                    Pf2 = pDex + " Dexterity";
+                }
+            }
+            //Strength Active
+            else if (pStrActive == true)
+            {
+                rand = Random.Range(2, 4);
+                if (rand == 2)
+                {
+                    pIntActive = true;
+                    rand = Random.Range(0, 2);
+                    if (rand == 0)
+                    { pInt = 1; }
+                    else
+                    { pInt = 2; }
+                    Pf2 = pInt + " Intelligence";
+                }
+                else if (rand == 3)
+                {
+                    pDexActive = true;
+                    rand = Random.Range(0, 2);
+                    if (rand == 0)
+                    { pDex = 1; }
+                    else
+                    { pDex = 2; }
+                    Pf2 = pDex + " Dexterity";
+
+                }
+            }
+            // Dexterity Active
+            else if (pDexActive == true)
+            {
+                rand = Random.Range(2, 4);
+                if (rand == 2)
+                {
+                    pIntActive = true;
+                    rand = Random.Range(0, 2);
+                    if (rand == 0)
+                    { pInt = 1; }
+                    else
+                    { pInt = 2; }
+                    Pf2 = pInt + " Intelligence";
+                }
+                else if (rand == 3)
+                {
+                    pStrActive = true;
+                    rand = Random.Range(0, 2);
+                    if (rand == 0)
+                    { pStr = 1; }
+                    else
+                    { pStr = 2; }
+                    Pf2 = pStr + " Strength";
+
+                }
+            }
+        }
+        //Prefix 3
+        if (Prefix3 == false)
+        {
+            Pf3 = " ";
+        }
+        else if (Prefix3 == true)
+        {
+            //Intelligence and Strength Active
+            if (pIntActive == true)
+            {
+                if (pStrActive == true)
+                {
+                    rand = Random.Range(3, 4);
+                    if (rand == 3)
+                    {
+                        pDexActive = true;
+                        rand = Random.Range(0, 2);
+                        if (rand == 0)
+                        { pDex = 1; }
+                        else
+                        { pDex = 2; }
+                        Pf3 = pDex + " Dexterity";
+                    }
+                }
+                //Intelligence and Dexterity Active
+                else if (pDexActive == true)
+                {
+                    rand = Random.Range(3, 4);
+                    if (rand == 3)
+                    {
+                        pStrActive = true;
+                        rand = Random.Range(0, 2);
+                        if (rand == 0)
+                        { pStr = 1; }
+                        else
+                        { pStr = 2; }
+                        Pf3 = pStr + " Strength";
+                    }
+                }
+            }
+            //Strength and Dexterity Active
+            else if (pDexActive == true)
+            {
+                if (pStrActive == true)
+                {
+                    rand = Random.Range(3, 4);
+                    if (rand == 3)
+                    {
+                        pIntActive = true;
+                        rand = Random.Range(0, 2);
+                        if (rand == 0)
+                        { pInt = 1; }
+                        else
+                        { pInt = 2; }
+                        Pf3 = pInt + " Intelligence";
+                    }
+                }
+            }
+        }
+
+        // Suffix 1
+        if (Suffix1 == false)
+        {
+            Sf1 = " ";
+        }
+        if (Suffix1 == true)
+        {
+            rand = Random.Range(1, 4);
+            if (rand == 1)
+            {
+                rand = Random.Range(0, 2);
+                if (rand == 0)
+                { sIncDmg = 10; }
+                else
+                { sIncDmg = 20; }
+                Sf1 = sIncDmg + "% Increased Damage";
+            }
+            else if (rand == 2)
+            {
+                rand = Random.Range(0, 2);
+                if (rand == 0)
+                { sMoreDmg = 10; }
+                else
+                { sMoreDmg = 20; }
+                Sf1 = sMoreDmg + "% More Damage";
+            }
+            else if (rand == 3)
+            {
+                rand = Random.Range(0, 2);
+                if (rand == 0)
+                { sDblDmg = 3; }
+                else
+                { sDblDmg = 6; }
+                Sf1 = sDblDmg + "% Chance to deal Double Damage";
+            }
+        }
+        //Suffix 2
+        if (Suffix2 == false)
+        {
+            Sf2 = " ";
+        }
+        if (Suffix2 == true)
+        {
+            rand = Random.Range(1, 4);
+            if (rand == 1)
+            {
+                rand = Random.Range(0, 2);
+                if (rand == 0)
+                { sIncDmg = 10; }
+                else
+                { sIncDmg = 20; }
+                Sf2 = sIncDmg + "% Increased Damage";
+            }
+            else if (rand == 2)
+            {
+                rand = Random.Range(0, 2);
+                if (rand == 0)
+                { sMoreDmg = 10; }
+                else
+                { sMoreDmg = 20; }
+                Sf2 = sMoreDmg + "% More Damage";
+            }
+            else if (rand == 3)
+            {
+                rand = Random.Range(0, 2);
+                if (rand == 0)
+                { sDblDmg = 3; }
+                else
+                { sDblDmg = 6; }
+                Sf2 = sDblDmg + "% Chance to deal Double Damage";
+            }
+        }
+        //Suffix 3
+        if (Suffix3 == false)
+        {
+            Sf3 = " ";
+        }
+        if (Suffix3 == true)
+        {
+            rand = Random.Range(1, 4);
+            if (rand == 1)
+            {
+                rand = Random.Range(0, 2);
+                if (rand == 0)
+                { sIncDmg = 10; }
+                else
+                { sIncDmg = 20; }
+                Sf3 = sIncDmg + "% Increased Damage";
+            }
+            else if (rand == 2)
+            {
+                rand = Random.Range(0, 2);
+                if (rand == 0)
+                { sMoreDmg = 10; }
+                else
+                { sMoreDmg = 20; }
+                Sf3 = sMoreDmg + "% More Damage";
+            }
+            else if (rand == 3)
+            {
+                rand = Random.Range(0, 2);
+                if (rand == 0)
+                { sDblDmg = 3; }
+                else
+                { sDblDmg = 6; }
+                Sf3 = sDblDmg + "% Chance to deal Double Damage";
+            }
+        }
+
+
+
+        // Start is called before the first frame update
+        void Start()
+        {
+           
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+
+        }
+    }
+}
